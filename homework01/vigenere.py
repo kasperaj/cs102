@@ -1,4 +1,3 @@
-import string
 def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     """
     Encrypts plaintext using a Vigenere cipher.
@@ -11,8 +10,8 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     'LXFOPVEFRNHR'
     """
     ciphertext = ""
-    alphabet_low = string.ascii_lowercase
-    alphabet_high = string.ascii_uppercase
+    alphabet_low = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_high = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     key_length = len(keyword)
     for i in range(len(plaintext)):
         if plaintext[i] in alphabet_high:
