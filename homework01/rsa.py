@@ -57,7 +57,8 @@ def multiplicative_inverse(e: int, phi: int) -> int:
             d, x, y = gcd_extended(b, a % b)
             return d, y, x - y * (a // b)
     d, x, y = gcd_extended(e, phi)
-    return x % phi
+    res = x % phi
+    return res
     pass
 def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[int, int]]:
     if not (is_prime(p) and is_prime(q)):
