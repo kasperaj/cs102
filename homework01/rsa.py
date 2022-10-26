@@ -57,6 +57,7 @@ def multiplicative_inverse(e: int, phi: int) -> int:
         else:
             d, x, y = gcd_extended(b, a % b)
             return d, y, x - y * (a // b)
+        
     d, x, y = gcd_extended(e, phi)
     return x % phi
     pass
