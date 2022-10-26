@@ -37,8 +37,8 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     'ATTACKATDAWN'
     """
     plaintext = ""
-    alphabet_low = string.ascii_lowercase
-    alphabet_high = string.ascii_uppercase
+    alphabet_low = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_high = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     key_length = len(keyword)
     for i in range(len(ciphertext)):
         if ciphertext[i] in alphabet_high:
