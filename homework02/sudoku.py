@@ -170,11 +170,11 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     for row in range(len(solution)):
         for col in range(len(solution)):
             pos = (row, col)
-            if     (
-                    (set(get_col(solution, pos)) != set("123456789"))
-                    or (set(get_row(solution, pos)) != set("123456789"))
-                    or (set(get_block(solution, pos)) != set("123456789"))
-                ):
+            if (
+                (set(get_col(solution, pos)) != set("123456789"))
+                or (set(get_row(solution, pos)) != set("123456789"))
+                or (set(get_block(solution, pos)) != set("123456789"))
+            ):
                 return False
     return True
     pass
@@ -230,4 +230,3 @@ if __name__ == "__main__":
             print(f"Puzzle {fname} can't be solved")
         else:
             display(solution)
-
