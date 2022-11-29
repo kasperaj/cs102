@@ -133,8 +133,7 @@ class GameOfLife:
             Список соседних клеток.
         """
         self.neighbours = []
-        x = cell[1]
-        y = cell[0]
+        y, x = cell
         for i in [-1, 0, 1]:
             for j in [-1, 0, 1]:
                 if (x + i != x or y + j != y) and (0 <= x + i <= self.cell_width - 1) and (
