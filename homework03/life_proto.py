@@ -110,10 +110,11 @@ class GameOfLife:
             for x in range(self.cell_width):
                 if self.grid[y][x] == 1:
                     pygame.draw.rect(
-                        self.screen, 
-                        pygame.Color('green'),
-                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
-                else: 
+                        self.screen,
+                        pygame.Color("green"),
+                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size),
+                    )
+                else:
                     pygame.draw.rect(
                         self.screen,
                         pygame.Color("white"),
