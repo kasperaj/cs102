@@ -1,6 +1,8 @@
 import argparse
+
 import pygame
 from life import GameOfLife
+from pygame.locals import *
 from ui import UI
 
 
@@ -28,11 +30,17 @@ class GUI(UI):
         for y in range(self.cell_height):
             for x in range(self.cell_width):
                 if self.game.curr_generation[y][x] == 1:
-                    pygame.draw.rect(self.screen, pygame.Color('green'),
-                                     (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("green"),
+                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size),
+                    )
                 else:
-                    pygame.draw.rect(self.screen, pygame.Color('white'),
-                                     (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("white"),
+                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size),
+                    )
 
     def run(self) -> None:
         pygame.init()
