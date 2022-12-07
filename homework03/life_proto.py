@@ -13,9 +13,6 @@ class GameOfLife:
     def __init__(
         self, width: int = 640, height: int = 480, cell_size: int = 10, speed: int = 10
     ) -> None:
-        self.next_gen = None
-        self.neighbours = None
-        self.grid = None
         self.width = width
         self.height = height
         self.cell_size = cell_size
