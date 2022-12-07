@@ -1,6 +1,6 @@
 import pathlib
-from random import randint
 import typing as tp
+from random import randint
 
 import pygame
 from pygame.locals import *
