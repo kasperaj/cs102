@@ -126,6 +126,6 @@ class GameOfLife:
         out = ""
         with open(filename, "w") as file:
             for row in range(self.rows):
-                out += "".join(map(str, grid[row])) + "\n"
+                out += "".join(map(str, self.curr_generation[row])) + "\n"
             out = out.rstrip("\n")
             file.write(out)
