@@ -54,8 +54,7 @@ class GameOfLife:
         y, x = cell
         for i in [-1, 0, 1]:
             for j in [-1, 0, 1]:
-                if (
-                    (x + i != x) or (y + j != y))
+                if (x + i != x or y + j != y)
                     and (0 <= x + i <= self.cols - 1) 
                     and (0 <= y + j <= self.rows - 1
                 ):
