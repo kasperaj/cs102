@@ -1,7 +1,7 @@
+from random import randint
 import typing as tp
 import pygame
 from pygame.locals import *
-from random import randint
 
 Cell = tp.Tuple[int, int]
 Cells = tp.List[int]
