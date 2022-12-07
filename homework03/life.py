@@ -17,7 +17,6 @@ class GameOfLife:
         randomize: bool = True,
         max_generations: tp.Optional[float] = float("inf"),
     ) -> None:
-        self.neighbours = None
         # Размер клеточного поля
         self.rows, self.cols = size
         # Предыдущее поколение клеток
