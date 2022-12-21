@@ -31,3 +31,8 @@ class Console(UI):
             screen.refresh()
             time.sleep(0.1)
         curses.endwin()
+
+
+game = GameOfLife((24, 32))
+ui = Console(game)
+ui.run()
