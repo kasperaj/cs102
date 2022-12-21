@@ -1,7 +1,8 @@
 import typing as tp
+from random import randint
+
 import pygame
 from pygame.locals import *
-from random import randint
 
 Cell = tp.Tuple[int, int]
 Cells = tp.List[int]
@@ -10,11 +11,8 @@ Grid = tp.List[Cells]
 
 class GameOfLife:
     def __init__(
-            self, width: int = 640, height: int = 480, cell_size: int = 10, speed: int = 10
+        self, width: int = 640, height: int = 480, cell_size: int = 10, speed: int = 10
     ) -> None:
-        self.next_gen = None
-        self.neighbours = None
-        self.grid = None
         self.width = width
         self.height = height
         self.cell_size = cell_size
@@ -32,26 +30,26 @@ class GameOfLife:
         self.speed = speed
 
     def draw_lines(self) -> None:
-        """ Отрисовать сетку """
+        """Отрисовать сетку"""
         for x in range(0, self.width, self.cell_size):
             pygame.draw.line(self.screen, pygame.Color("black"), (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
             pygame.draw.line(self.screen, pygame.Color("black"), (0, y), (self.width, y))
 
     def run(self) -> None:
-        """ Запустить игру """
+        """Запустить игру"""
         pygame.init()
         clock = pygame.time.Clock()
         pygame.display.set_caption("Game of Life")
         self.screen.fill(pygame.Color("white"))
 
         # Создание списка клеток
-        self.grid = self.create_grid()
+        self.grid = self.create_grid(randomize=True)
 
         running = True
         while running:
             for event in pygame.event.get():
-                if event.type == QUIT:
+                if event.type == pygame.QUIT:
                     running = False
             self.draw_lines()
 
@@ -90,7 +88,7 @@ class GameOfLife:
             n = self.cell_height
             grid = []
             for i in range(n):
-                grid.append(temp_grid[i * divider: (i + 1) * divider])
+                grid.append(temp_grid[i * divider : (i + 1) * divider])
         else:
             temp_grid = []
             for i in range(self.cell_height * self.cell_width):
@@ -98,7 +96,7 @@ class GameOfLife:
             n = self.cell_height
             grid = []
             for i in range(n):
-                grid.append(temp_grid[i * divider: (i + 1) * divider])
+                grid.append(temp_grid[i * divider : (i + 1) * divider])
         return grid
 
     def draw_grid(self) -> None:
@@ -108,11 +106,17 @@ class GameOfLife:
         for y in range(self.cell_height):
             for x in range(self.cell_width):
                 if self.grid[y][x] == 1:
-                    pygame.draw.rect(self.screen, pygame.Color('green'),
-                                     (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("green"),
+                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size),
+                    )
                 else:
-                    pygame.draw.rect(self.screen, pygame.Color('white'),
-                                     (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size))
+                    pygame.draw.rect(
+                        self.screen,
+                        pygame.Color("white"),
+                        (x * self.cell_size, y * self.cell_size, self.cell_size, self.cell_size),
+                    )
 
     def get_neighbours(self, cell: Cell) -> Cells:
         """
@@ -136,8 +140,11 @@ class GameOfLife:
         y, x = cell
         for i in [-1, 0, 1]:
             for j in [-1, 0, 1]:
-                if (x + i != x or y + j != y) and (0 <= x + i <= self.cell_width - 1) and (
-                        0 <= y + j <= self.cell_height - 1):
+                if (
+                    (x + i != x or y + j != y)
+                    and (0 <= x + i <= self.cell_width - 1)
+                    and (0 <= y + j <= self.cell_height - 1)
+                ):
                     neighbour_x = x + i
                     neighbour_y = y + j
                     self.neighbours.append(self.grid[neighbour_y][neighbour_x])
