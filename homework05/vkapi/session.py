@@ -42,4 +42,3 @@ class Session:
         response = self._request_session.post(url=full_url, data=kwargs, timeout=self._timeout)
 
         return response
-    
