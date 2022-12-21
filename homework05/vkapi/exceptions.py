@@ -20,4 +20,3 @@ class APIError(Exception):
     @classmethod
     def internal(cls, message: str) -> APIError:
         return cls(message, status_code=500)
-    
