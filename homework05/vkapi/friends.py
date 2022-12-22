@@ -74,7 +74,7 @@ def get_mutual(
         if response.status_code == 200:
             response_data = response.json()["response"]
             mutual_list.extend(response_data)
-        query_params["offset"] += VK_CONFIG["target_limit"]
+        query_params["offset"] += 100
         time.sleep(1)
 
     try:
