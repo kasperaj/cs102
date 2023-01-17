@@ -9,7 +9,6 @@ from pyvcs.repo import repo_find
 
 
 def hash_object(data: bytes, fmt: str, write: bool = False) -> str:
-    # PUT YOUR CODE HERE
     content = data
     header = f"{fmt} {len(content)}\0".encode()
     store = header + content
@@ -39,7 +38,6 @@ def resolve_object(obj_name: str, gitdir: pathlib.Path) -> tp.List[str]:
 
 
 def find_object(obj_name: str, gitdir: pathlib.Path) -> str:
-    # PUT YOUR CODE HERE
     obj_path = gitdir / "objects" / obj_name[:2] / obj_name[2:]
     if obj_path.exists():
         return obj_name
@@ -48,7 +46,6 @@ def find_object(obj_name: str, gitdir: pathlib.Path) -> str:
 
 
 def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
-    # PUT YOUR CODE HERE
     path = gitdir / "objects" / sha[:2] / sha[2:]
     with open(path, mode="rb") as f:
         obj_data = zlib.decompress(f.read())
@@ -58,7 +55,6 @@ def read_object(sha: str, gitdir: pathlib.Path) -> tp.Tuple[str, bytes]:
 
 
 def read_tree(data: bytes) -> str:
-    # PUT YOUR CODE HERE
     contents = data
     ans = []
     while contents != b"":
@@ -85,7 +81,6 @@ def read_tree(data: bytes) -> str:
 
 
 def cat_file(obj_name: str, pretty: bool = True) -> None:
-    # PUT YOUR CODE HERE
     fmt, data = read_object(obj_name, repo_find())
     if fmt == "commit":
         print(commit_parse(data))
@@ -108,5 +103,4 @@ def find_tree_files(tree_sha: str, gitdir: pathlib.Path) -> tp.List[tp.Tuple[str
 
 
 def commit_parse(raw: bytes, start: int = 0, dct=None):
-    # PUT YOUR CODE HERE
     return raw.decode()
