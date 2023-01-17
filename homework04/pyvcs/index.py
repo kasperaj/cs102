@@ -25,6 +25,7 @@ class GitIndexEntry(tp.NamedTuple):
     name: str
 
     def pack(self) -> bytes:
+        # PUT YOUR CODE HERE
         return (
             struct.pack(
                 ">LLLLLLLLLL20sH",
@@ -47,6 +48,7 @@ class GitIndexEntry(tp.NamedTuple):
 
     @staticmethod
     def unpack(data: bytes) -> "GitIndexEntry":
+        # PUT YOUR CODE HERE
         (
             ctime_s,
             ctime_n,
@@ -85,6 +87,7 @@ def read_index(gitdir: pathlib.Path) -> tp.List[GitIndexEntry]:
 
 
 def write_index(gitdir: pathlib.Path, entries: tp.List[GitIndexEntry]) -> None:
+    # PUT YOUR CODE HERE
     index_file = gitdir / "index"
     with open(index_file, "w+b") as f:
         f.write(struct.pack(">4sLL", b"DIRC", 2, len(entries)))
@@ -96,6 +99,7 @@ def write_index(gitdir: pathlib.Path, entries: tp.List[GitIndexEntry]) -> None:
 
 
 def ls_files(gitdir: pathlib.Path, details: bool = False) -> None:
+    # PUT YOUR CODE HERE
     entries = read_index(gitdir)
     for entry in entries:
         if details:
@@ -107,6 +111,7 @@ def ls_files(gitdir: pathlib.Path, details: bool = False) -> None:
 
 
 def update_index(gitdir: pathlib.Path, paths: tp.List[pathlib.Path], write: bool = True) -> None:
+    # PUT YOUR CODE HERE
     entries = read_index(gitdir)
     for path in paths:
         with open(path, "rb") as f:
