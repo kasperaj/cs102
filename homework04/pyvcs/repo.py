@@ -8,7 +8,6 @@ class NotGitRepo(Exception):
 
 
 def repo_find(workdir: str = ".") -> pathlib.Path:
-    # PUT YOUR CODE HERE
     workdir_path: pathlib.Path = pathlib.Path(workdir).absolute()
     git_dir_name = os.environ.get("GIT_DIR", ".git")
     if git_dir_name in workdir_path.parts[1:]:
@@ -25,7 +24,6 @@ def repo_find(workdir: str = ".") -> pathlib.Path:
 
 
 def repo_create(workdir: tp.Union[str, pathlib.Path]) -> pathlib.Path:
-    # PUT YOUR CODE HERE
     workdir = pathlib.Path(workdir)
     if os.path.isfile(workdir):
         raise Exception(f"{workdir} is not a directory")

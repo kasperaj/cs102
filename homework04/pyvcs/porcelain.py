@@ -10,7 +10,6 @@ from pyvcs.tree import commit_tree, write_tree
 
 
 def add(gitdir: pathlib.Path, paths: tp.List[pathlib.Path]) -> None:
-    # PUT YOUR CODE HERE
     index = []
     for path in paths:
         if path.is_dir():
@@ -23,7 +22,6 @@ def add(gitdir: pathlib.Path, paths: tp.List[pathlib.Path]) -> None:
 
 
 def commit(gitdir: pathlib.Path, message: str, author: tp.Optional[str] = None) -> str:
-    # PUT YOUR CODE HERE
     index = read_index(gitdir)
     # print([find_object(i.sha1.hex(), gitdir) for i in index])
 
@@ -34,7 +32,6 @@ def commit(gitdir: pathlib.Path, message: str, author: tp.Optional[str] = None) 
 
 
 def checkout(gitdir: pathlib.Path, obj_name: str) -> None:
-    # PUT YOUR CODE HERE
     old_tree = get_ref(gitdir)
     if obj_name == "HEAD":
         head = resolve_head(gitdir)
